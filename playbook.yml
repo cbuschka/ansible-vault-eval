@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Load vars
+      include_vars:
+        file: secret_vars.yml
+
+    - name: Print secret ingredient
+      ansible.builtin.debug:
+        msg: "The secret ingredient is {{secret_ingredient}}."
