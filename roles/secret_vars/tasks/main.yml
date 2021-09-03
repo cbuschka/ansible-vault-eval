@@ -1,0 +1,3 @@
+- name: Load vars
+  include_vars:
+    file: secret_vars.yml
