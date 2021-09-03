@@ -102,6 +102,19 @@ localhost                  : ok=2    changed=0    unreachable=0    failed=1    s
 make: *** [Makefile:14: run_playbook] Error 2
 ```
 
+### Cleaning up
+
+```
+make clean
+```
+
+Output:
+
+```
+conni@herbie ansible-vault-eval]$ make clean
+rm -f ./vault_password.txt ./secret_vars.yml
+```
+
 ## License
 
 Copyright (c) 2021 by [Cornelius Buschka](https://github.com/cbuschka).
