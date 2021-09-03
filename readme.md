@@ -76,6 +76,32 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 
+### How decrypting with the wrong vault password looks like
+
+Output:
+
+```
+[conni@herbie ansible-vault-eval]$ make run_playbook 
+ansible-playbook --vault-password-file ./vault_password.txt -l localhost playbook.yml
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [localhost] *********************************************************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [Load vars] *********************************************************************************************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [Print secret ingredient] *******************************************************************************************************************************************************************************************************************************
+fatal: [localhost]: FAILED! => {"msg": "Decryption failed (no vault secrets were found that could decrypt)"}
+
+PLAY RECAP ***************************************************************************************************************************************************************************************************************************************************
+localhost                  : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+make: *** [Makefile:14: run_playbook] Error 2
+```
+
 ## License
 
 Copyright (c) 2021 by [Cornelius Buschka](https://github.com/cbuschka).
