@@ -6,9 +6,9 @@
 
 ## Usage
 
-### Generate a secret, this is used to encrypt values ("vault password")
+### Generate a vault password file, this is used to encrypt values
 ```
-make store_secret
+make generate_vault_password
 ```
 
 ### Generate encrypted var in vars file
