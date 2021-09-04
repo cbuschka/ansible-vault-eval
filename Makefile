@@ -7,10 +7,8 @@ generate_vault_password:
 
 store_secret_vars:
 	@cd ${TOP_DIR}
-	(echo -n 'secret_ingredient: '; \
-		echo -en 'butter' | ansible-vault encrypt_string --vault-password-file ./vault_password.txt --output -; \
-	echo -n 'secret_ingredient2: '; \
-		echo -en 'salt' | ansible-vault encrypt_string --vault-password-file ./vault_password.txt --output -) > ./secret_vars.yml
+	(ansible-vault encrypt_string --vault-password-file ./vault_password.txt --name secret_ingredient 'butter' --output - && \
+	ansible-vault encrypt_string --vault-password-file ./vault_password.txt --name secret_ingredient2 'salt' --output -) > ./secret_vars.yml
 
 run_playbook:
 	@cd ${TOP_DIR}
